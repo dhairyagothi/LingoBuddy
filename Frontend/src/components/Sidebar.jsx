@@ -15,7 +15,7 @@ const Sidebar = () => {
     <div className="fixed left-0 top-0 h-screen w-64 bg-[#14213d] flex flex-col z-20">
       {/* Logo */}
       <div className="p-6 pb-8">
-        <h1 className="text-[#b9e937] text-3xl font-bold">duolingo</h1>
+        <h1 className="text-[#b9e937] text-3xl font-bold cursor-pointer">lingobuddy</h1>
       </div>
       
       {/* Navigation Menu */}
@@ -25,7 +25,7 @@ const Sidebar = () => {
             <button
               key={index}
               className={`
-                w-full flex items-center px-4 py-4 rounded-xl text-left transition-all duration-200 relative
+                w-full flex items-center px-4 py-4 rounded-xl text-left transition-all duration-200 relative cursor-pointer
                 ${item.active 
                   ? 'bg-[#25304a] text-white font-bold border-l-4 border-[#1cb0f6]' 
                   : 'text-white hover:bg-[#1c2a42]'

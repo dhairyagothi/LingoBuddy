@@ -12,7 +12,7 @@ const FooterLinks = () => {
         {links.map((link, index) => (
           <button
             key={index}
-            className="hover:text-white transition-colors"
+            className="hover:text-white transition-colors cursor-pointer"
             aria-label={link}
           >
             {link}

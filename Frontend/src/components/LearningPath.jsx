@@ -27,7 +27,7 @@ const LearningPath = () => {
                   <>
                     <div className="text-white text-sm font-bold mb-3 tracking-wide">START</div>
                     <button
-                      className="w-20 h-20 bg-[#b9e937] rounded-full flex items-center justify-center shadow-2xl hover:scale-105 transition-transform border-4 border-[#8bc34a] relative"
+                      className="w-20 h-20 bg-[#b9e937] rounded-full flex items-center justify-center shadow-2xl hover:scale-105 transition-transform border-4 border-[#8bc34a] relative cursor-pointer"
                       aria-label="Start lesson"
                     >
                       <span className="text-white text-3xl">⭐</span>
@@ -62,7 +62,7 @@ const LearningPath = () => {
                 <div className="absolute left-28 top-1/2 transform -translate-y-1/2">
                   <img 
                     src={mascot} 
-                    alt="Duolingo mascot" 
+                    alt="LingoBuddy mascot" 
                     className="w-32 h-32 drop-shadow-lg"
                   />
                 </div>

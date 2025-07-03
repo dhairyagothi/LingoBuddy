@@ -4,7 +4,7 @@ const SectionBanner = () => {
   return (
     <div className="bg-[#b9e937] rounded-xl px-8 py-6 mt-8 mx-auto max-w-2xl shadow-lg">
       <div className="flex items-center">
-        <button className="text-white mr-6 text-2xl hover:text-gray-200 transition-colors" aria-label="Go back">
+        <button className="text-white mr-6 text-2xl hover:text-gray-200 transition-colors cursor-pointer" aria-label="Go back">
           ←
         </button>
         <div>

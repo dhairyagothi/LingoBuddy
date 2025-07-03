@@ -21,7 +21,7 @@ const QuizComponent = () => {
         {sampleQuestion.options.map((opt, idx) => (
           <button
             key={idx}
-            className={`w-full py-2 rounded-xl border-2 font-semibold transition-colors duration-200 ${selected === idx ? 'bg-green text-white border-green' : 'bg-bgLight text-blue border-blue hover:bg-blue hover:text-white'}`}
+            className={`w-full py-2 rounded-xl border-2 font-semibold transition-colors duration-200 cursor-pointer ${selected === idx ? 'bg-green text-white border-green' : 'bg-bgLight text-blue border-blue hover:bg-blue hover:text-white'}`}
             onClick={() => handleSelect(idx)}
             disabled={showResult}
           >
@@ -31,7 +31,7 @@ const QuizComponent = () => {
       </div>
       {!showResult && (
         <button
-          className="bg-yellow text-orange font-bold px-6 py-2 rounded-full shadow hover:bg-orange hover:text-white transition-colors"
+          className="bg-yellow text-orange font-bold px-6 py-2 rounded-full shadow hover:bg-orange hover:text-white transition-colors cursor-pointer"
           onClick={handleSubmit}
           disabled={selected === null}
         >

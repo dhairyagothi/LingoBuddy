@@ -25,7 +25,7 @@ const RightSidebar = () => {
               <span className="text-3xl mr-3">⚡</span>
               <h3 className="text-lg font-bold">Daily Quests</h3>
             </div>
-            <button className="text-[#1cb0f6] text-sm font-bold hover:underline">
+            <button className="text-[#1cb0f6] text-sm font-bold hover:underline cursor-pointer">
               VIEW ALL
             </button>
           </div>
@@ -50,10 +50,10 @@ const RightSidebar = () => {
           <h3 className="text-lg font-bold mb-6 text-center">Create a profile to save your progress!</h3>
           
           <div className="space-y-3">
-            <button className="w-full bg-[#b9e937] text-[#14213d] font-bold py-3 px-4 rounded-xl hover:bg-[#a8d429] transition-colors text-sm tracking-wide">
+            <button className="w-full bg-[#b9e937] text-[#14213d] font-bold py-3 px-4 rounded-xl hover:bg-[#a8d429] transition-colors text-sm tracking-wide cursor-pointer">
               CREATE A PROFILE
             </button>
-            <button className="w-full bg-[#1cb0f6] text-white font-bold py-3 px-4 rounded-xl hover:bg-[#1a9fd4] transition-colors text-sm tracking-wide">
+            <button className="w-full bg-[#1cb0f6] text-white font-bold py-3 px-4 rounded-xl hover:bg-[#1a9fd4] transition-colors text-sm tracking-wide cursor-pointer">
               SIGN IN
             </button>
           </div>
