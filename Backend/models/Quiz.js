@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const quizSchema = new mongoose.Schema({
   quizId: {
@@ -14,7 +14,7 @@ const quizSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  language: {
+  languageId: {
     type: String,
     required: true,
     enum: ['spanish', 'french', 'german', 'italian', 'portuguese', 'japanese', 'korean', 'chinese']
@@ -76,4 +76,4 @@ quizSchema.pre('save', function(next) {
 // Index for efficient querying
 quizSchema.index({ language: 1, difficulty: 1 });
 
-module.exports = mongoose.model('Quiz', quizSchema);
+export default mongoose.model('Quiz', quizSchema);

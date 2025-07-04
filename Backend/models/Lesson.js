@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const lessonSchema = new mongoose.Schema({
   lessonId: {
@@ -14,7 +14,7 @@ const lessonSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  language: {
+  languageId: {
     type: String,
     required: true,
     enum: ['spanish', 'french', 'german', 'italian', 'portuguese', 'japanese', 'korean', 'chinese']
@@ -85,4 +85,4 @@ const lessonSchema = new mongoose.Schema({
 // Index for efficient querying
 lessonSchema.index({ language: 1, section: 1, unit: 1, order: 1 });
 
-module.exports = mongoose.model('Lesson', lessonSchema);
+export default mongoose.model('Lesson', lessonSchema);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import HeaderBar from '../components/HeaderBar';
@@ -9,6 +9,8 @@ import LessonCard from '../components/LessonCard';
 const Lessons = () => {
   const { languageId } = useParams();
   const navigate = useNavigate();
+  const [lessons, setLessons] = useState([]);
+  const [loading, setLoading] = useState(true);
   
   const languageData = {
     spanish: { name: 'Spanish', flag: '🇪🇸' },
@@ -23,7 +25,8 @@ const Lessons = () => {
 
   const currentLanguage = languageId ? languageData[languageId] : { name: 'All Languages', flag: '🌍' };
 
-  const lessons = [
+  // Static fallback lessons
+  const staticLessons = [
     { 
       id: 1,
       title: 'Basics', 
@@ -98,11 +101,57 @@ const Lessons = () => {
     }
   ];
 
+  useEffect(() => {
+    const fetchLessons = async () => {
+      try {
+        const url = languageId 
+          ? `http://localhost:5000/api/lessons?language=${languageId}`
+          : 'http://localhost:5000/api/lessons';
+        
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          if (data.success && data.lessons) {
+            setLessons(data.lessons);
+          } else {
+            setLessons(staticLessons);
+          }
+        } else {
+          // Fallback to static data if API fails
+          setLessons(staticLessons);
+        }
+      } catch (error) {
+        console.error('Error fetching lessons:', error);
+        // Fallback to static data
+        setLessons(staticLessons);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLessons();
+  }, [languageId]);
+
   const handleLessonClick = (lesson) => {
     if (!lesson.locked) {
-      navigate(`/lessons/${lesson.id}`);
+      const lessonId = lesson._id || lesson.id;
+      navigate(`/lessons/${lessonId}`);
     }
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#0f1419] via-[#1a2332] to-[#0f1419] text-white">
+        <Sidebar />
+        <HeaderBar />
+        <div className="ml-64 mr-80 flex flex-col items-center justify-center min-h-screen">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#b9e937]"></div>
+          <p className="mt-4 text-lg">Loading lessons...</p>
+        </div>
+        <RightSidebar />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f1419] via-[#1a2332] to-[#0f1419] text-white overflow-hidden">
@@ -143,7 +192,7 @@ const Lessons = () => {
         <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {lessons.map((lesson) => (
             <div
-              key={lesson.id}
+              key={lesson._id || lesson.id}
               onClick={() => handleLessonClick(lesson)}
               className={`
                 bg-gradient-to-br from-[#1e2d3a] to-[#2a3f52] rounded-2xl p-6 transition-all duration-300 

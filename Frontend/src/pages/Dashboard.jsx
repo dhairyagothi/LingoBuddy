@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import HeaderBar from '../components/HeaderBar';
@@ -9,9 +9,12 @@ import FooterLinks from '../components/FooterLinks';
 
 const Dashboard = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('spanish');
+  const [languages, setLanguages] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   
-  const languages = [
+  // Static fallback languages
+  const staticLanguages = [
     { 
       id: 'spanish', 
       name: 'Spanish', 
@@ -77,6 +80,37 @@ const Dashboard = () => {
       description: 'Master the world\'s most spoken language'
     }
   ];
+
+  useEffect(() => {
+    const fetchUserProgress = async () => {
+      try {
+        // For now, just use static data since we don't have user authentication yet
+        // TODO: Implement user-specific progress fetching
+        setLanguages(staticLanguages);
+      } catch (error) {
+        console.error('Error fetching user progress:', error);
+        setLanguages(staticLanguages);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserProgress();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#0f1419] via-[#1a2332] to-[#0f1419] text-white">
+        <Sidebar />
+        <HeaderBar />
+        <div className="ml-64 mr-80 flex flex-col items-center justify-center min-h-screen">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#b9e937]"></div>
+          <p className="mt-4 text-lg">Loading dashboard...</p>
+        </div>
+        <RightSidebar />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#0f1419] via-[#1a2332] to-[#0f1419] text-white overflow-hidden">

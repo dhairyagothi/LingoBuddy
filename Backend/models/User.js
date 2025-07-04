@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -21,13 +21,38 @@ const userSchema = new mongoose.Schema({
     minlength: [6, 'Password must be at least 6 characters'],
     select: false
   },
+  streak: {
+    type: Number,
+    default: 0
+  },
+  gems: {
+    type: Number,
+    default: 500
+  },
+  hearts: {
+    type: Number,
+    default: 5,
+    max: 5
+  },
+  xp: {
+    type: Number,
+    default: 0
+  },
+  level: {
+    type: Number,
+    default: 1
+  },
+  completedLessons: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Lesson'
+  }],
+  currentLesson: {
+    type: Number,
+    default: 1
+  },
   avatar: {
     type: String,
     default: null
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
   },
   lastLogin: {
     type: Date,
@@ -70,4 +95,4 @@ userSchema.methods.toJSON = function() {
   return userObject;
 };
 
-module.exports = mongoose.model('User', userSchema);
+export default mongoose.model('User', userSchema);

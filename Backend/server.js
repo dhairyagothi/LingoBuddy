@@ -11,6 +11,7 @@ import userRoutes from './routes/users.js';
 import lessonRoutes from './routes/lessons.js';
 import progressRoutes from './routes/progress.js';
 import leaderboardRoutes from './routes/leaderboard.js';
+import quizRoutes from './routes/quiz.js';
 
 dotenv.config();
 
@@ -27,7 +28,8 @@ const connectDB = async () => {
     console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.error('MongoDB connection error:', error);
-    process.exit(1);
+    console.warn('⚠️  Running without MongoDB - some features may not work');
+    // Don't exit the process, just continue without MongoDB
   }
 };
 
@@ -60,6 +62,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/lessons', lessonRoutes);
 app.use('/api/progress', progressRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
+app.use('/api/quiz', quizRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
