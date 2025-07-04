@@ -2,6 +2,15 @@
 
 A language learning web application built with the MERN stack (MongoDB, ExpressJS, ReactJS, NodeJS).
 
+## Team Details 
+
+| Team Number | Members | Project Number | Project Name | Col5 | Member Role | Member Name | Registration Number | VIT Email | Personal Email | Phone Number |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 3 | 4 | P03 | Language Learning App | M1 | M1 | Dhairya Gothi | 23BCE10225 | dhairya.23bce10225@vitbhopal.ac.in | dhairyag31@gmail.com | 9424065768 |
+| | | | | | M2 | Rishita Mehta | 23BCE10235 | rishita.23bce10235@vitbhopal.ac.in | rishitamehta298@gmail.com | 8854940711 |
+| | | | | | M3 | Riddhi Mhadgut | 23BCE10110 | riddhi.23bce10110@vitbhopal.ac.in | riddhimhadgut17@gmail.com | 9109356746 |
+| | | | | | M4 | Mradul Pratap Singh Parihar | 23BSA10178 | mradul.23bsa10178@vitbhopal.ac.in | officialcoding1@gmail.com | 7747067385 |
+
 ## Project Structure
 
 ```
