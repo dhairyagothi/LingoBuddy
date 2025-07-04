@@ -7,6 +7,11 @@ import LessonDetail from './pages/LessonDetail';
 import Quiz from './pages/Quiz';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import LanguagePage from './pages/LanguagePage';
+import Leaderboard from './pages/Leaderboard';
+import Quests from './pages/Quests';
+import Shop from './pages/Shop';
+import More from './pages/More';
 
 const App = () => (
   <AppProvider>
@@ -15,11 +20,18 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/lessons" element={<Lessons />} />
           <Route path="/lessons/:id" element={<LessonDetail />} />
+          <Route path="/lessons/:languageId" element={<Lessons />} />
           <Route path="/quiz" element={<Quiz />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/quiz/:languageId" element={<Quiz />} />
+          <Route path="/language/:languageId" element={<LanguagePage />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/quests" element={<Quests />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/more" element={<More />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
       </div>
