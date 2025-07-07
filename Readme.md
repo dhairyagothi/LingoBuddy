@@ -1,6 +1,6 @@
 # LingoBuddy
 
-A language learning web application built with the MERN stack (MongoDB, ExpressJS, ReactJS, NodeJS).
+A language learning web application built with the MERN stack (MongoDB, ExpressJS, ReactJS, NodeJS ).
 
 ## Team Details 
 
